@@ -1,19 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hola mundo</title>
+    <style>
+        .rojo {
+            background: red;
+        }
+
+        .azul {
+            background: blue;
+        }
+
+        #contenido1 {
+            border: 1px solid black;
+        }
+    </style>
+
 </head>
+
 <body>
-    <h1>Guia para robar un repositorio</h1>
-    <ol>
-        <li>Clona el repo que necesites</li>
-        <li>Entra dentro</li>
-        <li>Borra la carpeta .git</li>
-        <li>Inicia un repo con git init</li>
-        <li>Añade cambios con git add y confirma con git commit</li>
-        <li>Crea el repo remoto con gh repo create</li>
-    </ol>
+    <div id="contenido1" class="rojo">
+        <p>Los ids son unicos</p>
+    </div>
+
+    <div id="contenido2" class="rojo">
+        <p>contenido 2</p>
+    </div>
+
+    <div id="contenido3" class="azul">
+        <p>Las clases son compartidas</p>
+    </div>
+
+    <div id="contenido4">
+        <p id="contador"></p>
+        <button onclick="sumar()">Pulsar</button>
+    </div>
+
+    <script>
+        const contenido2 = document.querySelector("#contenido2")
+        console.log(contenido2)
+        const p1 = document.createElement("p")
+        const p2 = document.createElement("p")
+        p1.textContent="hola mundo"
+        p2.textContent="klk"
+        contenido2.appendChild(p1)
+        contenido2.appendChild(p2)
+
+        let contador = 0;
+        let contadorElement = document.querySelector("#contador")
+        contadorElement.textContent = contador;
+
+        function sumar(){
+            console.log("funcion disparada")
+            contador++;
+            contadorElement.textContent = contador;
+        }
+
+        const frutas = ["manzana", "pera", "mango", "papaya", "platano"]
+        const listaElement = document.createElement("ul")
+        for (let i = 0; i < frutas.length; i++) {
+            const elementoLista = document.createElement("li")
+            elementoLista.textContent = frutas[i]
+            listaElement.appendChild(elementoLista)
+        }
+        document.body.appendChild(listaElement)
+        console.log("despues del loop")
+
+        // las variables y constantes en js tienen un scope limitado a su bloque
+        let nombre = "diego" //alcance global
+        console.log(nombre)
+        for (let i = 0; i < 3; i++) {
+            console.log(i)
+            let nombre = "manolo" //alcance de bloque
+            console.log(nombre)
+        }
+        console.log(nombre)
+    </script>
 </body>
+
 </html>
